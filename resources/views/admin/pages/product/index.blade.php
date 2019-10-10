@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="container-fluid">
+	<div class="container-fluid">
 	    <!-- Page Heading -->
-	    <h1 class="h3 mb-2 text-gray-800">{{ trans('message.category') }}</h1>
+	    <h1 class="h3 mb-2 text-gray-800">{{ trans('message.product') }}</h1>
 	    <!-- DataTales Example -->
 	    <div class="card shadow mb-4">
 	        <div class="card-header py-3">
 	        	<div class="row">
 	        		<div class="col-md-5">
-	        			<h6 class="m-0 font-weight-bold text-primary">{{ trans('message.category') }}/ {{ trans('message.list') }}</h6>
+	        			<h6 class="m-0 font-weight-bold text-primary">{{ trans('message.product') }}/ {{ trans('message.list') }}</h6>
 	        		</div>
 	        		<div class="col-md-7">
 	        			<form>
@@ -36,47 +36,47 @@
 	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                    <thead>
 	                        <tr>
-	                            <th>ID</th>
+	                            <th>#</th>
+	                            <th>{{ trans('message.product_name') }}</th>
+	                            <th>{{ trans('message.status') }}</th>
+	                            <th>{{ trans('message.price') }}</th>
+	                            <th>{{ trans('message.image') }}</th>
 	                            <th>{{ trans('message.category_name') }}</th>
 	                            <th>{{ trans('message.parent_category') }}</th>
-	                            <th>{{ trans('message.created_at') }}</th>
-	                            <th>{{ trans('message.updated_at') }}</th>
 	                            <th colspan="2" class="align">{{ trans('message.action') }}</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                    	@foreach($categories as $key => $category)
+	                    	@foreach($products as $key => $product)
 	                        <tr>
-	                            <td>{{ $category->id }}</td>
-	                            <td>{{ $category->name }}</td>
+	                            <td>{{ $key+1 }}</td>
+	                            <td>{{ $product->name }}</td>
+	                            <td>{{ $product->status }}</td>
+	                            <td>{{ number_format($product->price) }} VND</td>
+	                            <td><img src="upload/{{ $product->image }}" alt="" height="100" width="100"></td>
 	                            <td>
-	                            	@foreach ($parent_id as $key => $value)
-		                            	@if ($category->parent_id == 0)
-		                            	    {{ " " }}
-		                            	@elseif ($value->id == $category->parent_id)
-		                            	    {{ $value->name }}
-		                            	@endif
+	                            	@foreach ($category_id as $cb)
+	                            		@if ($cb->id == $product->category_id)
+	                            			{{ $cb->name }}
+	                            		@endif
 	                            	@endforeach
 	                            </td>
 	                            <td>
-	                            	<?php
-	                            		echo \Carbon\Carbon::createFromTimeStamp(strtotime($category->created_at))->diffForHumans();
-	                            	?>
+	                            	@foreach ($cate_parent as $cp)
+	                            		@if ($cp->id == $product->cate_parent)
+	                            			{{ $cp->name }}
+	                            		@endif
+	                            	@endforeach
 	                            </td>
 	                            <td>
-	                            	<?php
-	                            		echo \Carbon\Carbon::createFromTimeStamp(strtotime($category->updated_at))->diffForHumans();
-	                            	?>
-	                            </td>
-	                            <td>
-	                            	<a href="{{ route('category-edit', $category->id) }}">
+	                            	<a href="{{ route('product-edit', $product->id) }}">
 	                            		<button class="btn btn-primary">
 	                            			<i class="fa fa-pencil" aria-hidden="true"> {{ trans('message.edit') }}</i>
 	                            		</button>
 	                            	</a>
 	                            </td>
 	                            <td>
-	                            	<form action="{{ route('category-delete', $category->id) }}" method="POST">
+	                            	<form action="{{ route('product-delete', $product->id) }}" method="POST">
 	                            		@csrf
 	                            		@method('delete')
 	                            		<button type="submit" class="btn btn-danger" onclick="return accessDelete('{{ trans('message.access_delete') }}')">
@@ -89,7 +89,7 @@
 	                    </tbody>
 	                </table>
 	                <div class="row">
-	                	<div class="col-md-4 offset-md-4">{{ $categories->links() }}</div>
+	                	<div class="col-md-4 offset-md-4">{{ $products->links() }}</div>
 	                </div>
 	            </div>
 	        </div>
