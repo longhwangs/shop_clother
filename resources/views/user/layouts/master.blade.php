@@ -3,6 +3,7 @@
 <head>
 	<title>Home</title>
 	<meta charset="UTF-8">
+	<base href="{{ asset('') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="icon" type="image/png" href="iassets/user/mages/icons/favicon.png"/>
 	<link rel="stylesheet" type="text/css" href="assets/user/vendor/bootstrap/css/bootstrap.min.css">
@@ -19,18 +20,14 @@
 	<link rel="stylesheet" type="text/css" href="assets/user/vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="assets/user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/user/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/user/css/style.css">
 </head>
 <body class="animsition">
 	
 	<!-- Header -->
 	@include('user.layouts.header')
 
-
-	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
 		@yield('content')
-	</section>
-
 
 	<!-- Footer -->
 	@include('user.layouts.footer')

@@ -17,6 +17,16 @@ Route::get('/', function () {
 
 Route::get('lang/{lang}', 'LanguageController@changeLang')->name('language');
 
+Route::group(['prefix' => 'auth'], function() {
+	Route::get('register', 'Auth\RegisterController@getRegister')->name('get-register');
+	Route::post('register', 'Auth\RegisterController@postRegister')->name('post-register');
+
+	Route::get('login', 'Auth\LoginController@getLogin')->name('get-login');
+	Route::post('login', 'Auth\LoginController@postLogin')->name('post-login');
+
+	Route::get('logout', 'Auth\LoginController@getLogout')->name('get-logout');
+});
+
 Route::group(['prefix' => 'admin'], function() {
 	Route::group(['prefix' => 'category'], function() {
 		Route::get('/', 'CategoryController@index')->name('category-list');
@@ -41,7 +51,5 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::group(['prefix' => 'user'], function() {
-	Route::get('/', function() {
-		return view('user.pages.home');
-	});
+	Route::get('/', 'PageController@index')->name('home');
 });
