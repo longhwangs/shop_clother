@@ -52,4 +52,6 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::group(['prefix' => 'user'], function() {
 	Route::get('/', 'PageController@index')->name('home');
+	Route::get('profile', 'PageController@editProfile')->name('edit-profile');
+	Route::post('profile/{id}', 'PageController@updateProfile')->name('update-profile');
 });
