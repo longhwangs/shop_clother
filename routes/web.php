@@ -54,4 +54,6 @@ Route::group(['prefix' => 'user'], function() {
 	Route::get('/', 'PageController@index')->name('home');
 	Route::get('profile', 'PageController@editProfile')->name('edit-profile');
 	Route::post('profile/{id}', 'PageController@updateProfile')->name('update-profile');
+	Route::get('product-type/{id}', 'PageController@productType')->name('product.type');
+	Route::get('product-detail/{id}', 'PageController@productDetail')->name('product.detail');
 });
