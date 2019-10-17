@@ -41,6 +41,18 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Order</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">{{ trans('message.category') }}:</h6>
+                <a class="collapse-item" href="{{ route('order.index') }}">{{ trans('message.list') }}</a>
+            </div>
+        </div>
+    </li>
     <hr class="sidebar-divider d-none d-md-block">
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

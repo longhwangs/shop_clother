@@ -50,6 +50,10 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::delete('delete/{id}', 'ProductController@delete')->name('product-delete');
 	});
 
+	Route::resource('order', 'OrderController');
+	//Route::get('order', 'OrderController@index')->name('order.index');
+	//Route::get('order/{id}', 'OrderController@destroy')->name('order.destroy');
+
 });
 
 Route::group(['prefix' => 'user'], function() {

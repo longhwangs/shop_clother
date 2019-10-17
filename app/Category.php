@@ -15,11 +15,11 @@ class Category extends Model
 
     public function products()
     {
-    	return $this->hasMany('Product::class');
+    	return $this->hasMany(Product::class);
     }
 
     public function product_suggests()
     {
-    	return $this->hasMany('ProductSuggest::class');
+    	return $this->hasMany(ProductSuggest::class);
     }
 }
