@@ -76,7 +76,7 @@
 							
 							<!--  -->
 							<div class="p-t-33">
-								<form action="" method="POST">
+								<form action="{{ route('cart.getAdd', $product->id) }}" method="GET">
 									@csrf
 
 								<div class="flex-w flex-r-m p-b-10">
@@ -93,7 +93,7 @@
 											</div>
 										</div>
 
-										<a href=""><button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<a href="{{ route('cart.getAdd', $product->id) }}"><button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Add to cart
 										</button></a>
 									</div>

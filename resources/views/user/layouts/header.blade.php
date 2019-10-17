@@ -70,7 +70,7 @@
 						<i class="zmdi zmdi-search"></i>
 					</div>
 
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{ \Cart::count() }}">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 
@@ -86,7 +86,7 @@
 	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 		<div class="container-search-header">
 			<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-				<img src="images/icons/icon-close2.png" alt="CLOSE">
+				<img src="assets/user/images/icons/icon-close2.png" alt="CLOSE">
 			</button>
 
 			<form class="wrap-search-header flex-w p-l-15">
@@ -115,50 +115,38 @@
 		
 		<div class="header-cart-content flex-w js-pscroll">
 			<ul class="header-cart-wrapitem w-full">
+				@foreach (Cart::content() as $cart)
 				<li class="header-cart-item flex-w flex-t m-b-12">
 					<div class="header-cart-item-img">
-						<img src="images/item-cart-01.jpg" alt="IMG">
+						<img src="upload/{{ $cart->options->image }}" alt="IMG" height="80">
 					</div>
 
 					<div class="header-cart-item-txt p-t-8">
 						<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							White Shirt Pleat
+							{{ $cart->name }}
 						</a>
 
 						<span class="header-cart-item-info">
-							1 x $19.00
+							{{ $cart->qty }} x {{ number_format($cart->price) }} VND
 						</span>
+						<a style="float: right; margin-right: 50px; margin-top: -65px" href="{{ route('cart.delete', $cart->rowId) }}"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 					</div>
 				</li>
-
-				<li class="header-cart-item flex-w flex-t m-b-12">
-					<div class="header-cart-item-img">
-						<img src="images/item-cart-02.jpg" alt="IMG">
-					</div>
-
-					<div class="header-cart-item-txt p-t-8">
-						<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							Converse All Star
-						</a>
-
-						<span class="header-cart-item-info">
-							1 x $39.00
-						</span>
-					</div>
-				</li>
+				<hr>
+				@endforeach
 			</ul>
 			
 			<div class="w-full">
 				<div class="header-cart-total w-full p-tb-40">
-					Total: $75.00
+					Total: {{ Cart::total() }} VND
 				</div>
 
 				<div class="header-cart-buttons flex-w w-full">
-					<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+					<a href="{{ route('cart.list') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 						View Cart
 					</a>
 
-					<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+					<a href="{{ route('checkout') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 						Check Out
 					</a>
 				</div>

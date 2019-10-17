@@ -21,6 +21,10 @@
 	<link rel="stylesheet" type="text/css" href="assets/user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/user/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/user/css/style.css">
+	<script src="assets/user/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script type="text/javascript" src="assets/user/js/cart.js"></script>
 </head>
 <body class="animsition">
 	
@@ -40,7 +44,6 @@
 		</span>
 	</div>
 	
-	<script src="assets/user/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="assets/user/vendor/animsition/js/animsition.min.js"></script>
 	<script src="assets/user/vendor/bootstrap/js/popper.js"></script>
 	<script src="assets/user/vendor/bootstrap/js/bootstrap.min.js"></script>

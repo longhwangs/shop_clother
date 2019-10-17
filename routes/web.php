@@ -57,3 +57,10 @@ Route::group(['prefix' => 'user'], function() {
 	Route::get('product-type/{id}', 'PageController@productType')->name('product.type');
 	Route::get('product-detail/{id}', 'PageController@productDetail')->name('product.detail');
 });
+
+Route::get('cart/{id}', 'CartController@getaddCart')->name('cart.getAdd');
+Route::get('cart/delete/{id}', 'CartController@deleteCart')->name('cart.delete');
+Route::get('list-cart', 'CartController@listCart')->name('cart.list');
+Route::get('cart/update', 'CartController@updateCart')->name('cart.update');
+Route::get('checkout', 'CartController@checkout')->name('checkout');
+Route::post('checkout', 'CartController@postCheckout')->name('postCheckout');

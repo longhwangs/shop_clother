@@ -196,7 +196,7 @@
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 									<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
-										<i class="zmdi zmdi-shopping-cart"></i>
+										<a href="{{ route('cart.getAdd', $pd->id) }}"><i class="zmdi zmdi-shopping-cart"></i></a>
 									</div>
 								</a>
 							</div>
