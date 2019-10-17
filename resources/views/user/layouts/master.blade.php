@@ -43,7 +43,8 @@
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
-	
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=943790589307662&autoLogAppEvents=1"></script>
 	<script src="assets/user/vendor/animsition/js/animsition.min.js"></script>
 	<script src="assets/user/vendor/bootstrap/js/popper.js"></script>
 	<script src="assets/user/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -58,6 +59,21 @@
 	<script src="assets/user/vendor/sweetalert/sweetalert.min.js"></script>
 	<script src="assets/user/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script src="assets/user/js/main.js"></script>
+	<!-- Subiz -->
+<script>
+(function(s, u, b, i, z){
+  u[i]=u[i]||function(){
+    u[i].t=+new Date();
+    (u[i].q=u[i].q||[]).push(arguments);
+  };
+  z=s.createElement('script');
+  var zz=s.getElementsByTagName('script')[0];
+  z.async=1; z.src=b; z.id='subiz-script';
+  zz.parentNode.insertBefore(z,zz);
+})(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
+subiz('setAccount', 'acqmctnwjyyktiptpxmv');
+</script>
+<!-- End Subiz -->
 
 </body>
 </html>

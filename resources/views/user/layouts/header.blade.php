@@ -19,7 +19,7 @@
 					<a href="#" class="flex-c-m trans-04 p-lr-25">
 						{{ Auth::user()->name }}
 					</a>
-					<a href="#" class="flex-c-m trans-04 p-lr-25">
+					<a href="{{ route('product-list') }}" class="flex-c-m trans-04 p-lr-25">
 						{{ trans('message.administration') }}
 					</a>
 					<a href="{{ route('edit-profile') }}" class="flex-c-m trans-04 p-lr-25">
@@ -61,6 +61,9 @@
 								</li>
 							@endforeach
 						@endif
+						<li>
+							<a href="{{ route('get.suggest') }}">Gợi ý sản phẩm</a>
+						</li>
 					</ul>
 				</div>	
 

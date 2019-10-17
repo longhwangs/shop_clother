@@ -118,7 +118,7 @@
 							</li>
 
 							<li class="nav-item p-b-10">
-								<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Bình luận (2)</a>
+								<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Bình luận</a>
 							</li>
 						</ul>
 
@@ -147,34 +147,10 @@
 											<!-- Review -->
 											<div class="flex-w flex-t p-b-68">
 											
-											
+											<div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
+
 											<!-- Add review -->
-											<form class="w-full" action="#" method="POST">
-												@csrf
-												<h5 class="mtext-108 cl2 p-b-7">
-													Thêm bình luận :
-												</h5>
-												<div class="row p-b-25">
-													<div class="col-12 p-b-5">
-														<label class="stext-102 cl3" for="content">Nội dung</label>
-														<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="content"></textarea>
-													</div>
-
-													<div class="col-sm-6 p-b-5">
-														<label class="stext-102 cl3" for="name">Tên</label>
-														<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-													</div>
-
-													<div class="col-sm-6 p-b-5">
-														<label class="stext-102 cl3" for="email">Email</label>
-														<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="email" name="email">
-													</div>
-												</div>
-
-												<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-													Submit
-												</button>
-											</form>
+											
 										</div>
 									</div>
 								</div>
@@ -226,6 +202,7 @@
 						                        	<i class="zmdi zmdi-shopping-cart"></i>
 						                        </a>
 						                    </div>
+						                    <div class="fb-share-button" data-href="https://www.facebook.com/sharer/sharer.php?u=YourPageLink.com&display=popup" data-layout="button_count" data-size="small"></div>
 		                                </a>
 									</div>
 								</div>

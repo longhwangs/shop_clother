@@ -7,3 +7,12 @@ function updateQty(qty, rowId) {
 		}
 	);
 }
+
+$(document).ready(function() {
+	$('#cate_parent').change(function() {
+		var cate_parent = $(this).val();
+		$.get("admin/product/create/"+cate_parent, function(data) {
+			$("#category_id").html(data);
+		});
+	});
+});

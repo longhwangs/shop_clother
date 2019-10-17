@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('admin.layouts.master');
 });
 
+
+
 Route::get('lang/{lang}', 'LanguageController@changeLang')->name('language');
 
 Route::group(['prefix' => 'auth'], function() {
@@ -52,15 +54,21 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::group(['prefix' => 'user'], function() {
 	Route::get('/', 'PageController@index')->name('home');
+
 	Route::get('profile', 'PageController@editProfile')->name('edit-profile');
 	Route::post('profile/{id}', 'PageController@updateProfile')->name('update-profile');
+
 	Route::get('product-type/{id}', 'PageController@productType')->name('product.type');
 	Route::get('product-detail/{id}', 'PageController@productDetail')->name('product.detail');
+
+	Route::get('suggest', 'PageController@getSuggest')->name('get.suggest');
+	Route::post('suggest', 'PageController@postSuggest')->name('post.suggest');
 });
 
-Route::get('cart/{id}', 'CartController@getaddCart')->name('cart.getAdd');
+
+Route::get('cart/add/{id}', 'CartController@getaddCart')->name('cart.getAdd');
+Route::get('cart/update', 'CartController@updateCart')->name('cart.update');
 Route::get('cart/delete/{id}', 'CartController@deleteCart')->name('cart.delete');
 Route::get('list-cart', 'CartController@listCart')->name('cart.list');
-Route::get('cart/update', 'CartController@updateCart')->name('cart.update');
 Route::get('checkout', 'CartController@checkout')->name('checkout');
 Route::post('checkout', 'CartController@postCheckout')->name('postCheckout');
