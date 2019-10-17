@@ -73,4 +73,15 @@ class PageController extends Controller
         return redirect()->back()->with(['type_message' => 'success', 'flash_message' => 'Thanks for your offer']);
     }
 
+    public function postRate(Request $request)
+    {
+        $product = Product::find($request->id);
+        $rating = new \willvincent\Rateable\Rating;
+        $rating->rating = $request->rate;
+        $rating->user_id = auth()->user()->id;
+        $product->ratings()->save($rating);
+
+        return redirect()->back();
+    }
+
 }

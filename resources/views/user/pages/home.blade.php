@@ -191,6 +191,10 @@
 								<span class="stext-105 cl3">
 									{{ number_format($pd->price) }} VND
 								</span>
+
+								<span class="stext-105 cl3" style="font-size: 70%">
+									<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $pd->averageRating }}" data-size="xs" disabled="">
+								</span>
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">

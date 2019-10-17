@@ -65,6 +65,8 @@
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
 								{{ $product->name }}
 							</h4>
+							<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $product->averageRating }}" data-size="xs" disabled="">
+							<br>
 
 							<span class="mtext-106 cl2">
 								{{ number_format($product->price) }} VNĐ
@@ -114,11 +116,11 @@
 							</li>
 
 							<li class="nav-item p-b-10">
-								
+								<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Bình luận</a>
 							</li>
 
 							<li class="nav-item p-b-10">
-								<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Bình luận</a>
+								<a class="nav-link" data-toggle="tab" href="#rate" role="tab">Đánh giá</a>
 							</li>
 						</ul>
 
@@ -134,8 +136,20 @@
 							</div>
 
 							<!-- - -->
-							<div class="tab-pane fade" id="information" role="tabpanel">
+							<div class="tab-pane fade" id="rate" role="tabpanel">
 								<div class="row">
+									<div class="how-pos2 p-lr-15-md">
+										<h3 class="product-title">ĐÁNH GIÁ SẢN PHẨM</h3>
+										<form action="{{ route('post.rate') }}" method="POST">
+											@csrf
+					                        <div class="rating">
+					                            <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $product->userAverageRating }}" data-size="xs">
+					                            <input type="hidden" name="id" required="" value="{{ $product->id }}">
+					                            <br/>
+					                            <button class="btn btn-success">Đánh giá</button>
+					                        </div>
+					                    </form>
+									</div>
 								</div>
 							</div>
 
@@ -193,6 +207,10 @@
 										<span class="stext-105 cl3">
 											{{ number_format($relate->price) }} VNĐ
 										</span>
+
+										<span class="stext-105 cl3" style="font-size: 70%">
+											<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $relate->averageRating }}" data-size="xs" disabled="">
+										</span>
 									</div>
 
 									<div class="block2-txt-child2 flex-r p-t-3">
@@ -214,4 +232,7 @@
 			</div>
 		</section>
 	</div>
+	<script type="text/javascript">
+	    $("#input-id").rating();
+	</script>
 @endsection

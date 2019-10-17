@@ -67,6 +67,8 @@ Route::group(['prefix' => 'user'], function() {
 
 	Route::get('suggest', 'PageController@getSuggest')->name('get.suggest');
 	Route::post('suggest', 'PageController@postSuggest')->name('post.suggest');
+
+	Route::post('rating', 'PageController@postRate')->name('post.rate');
 });
 
 
