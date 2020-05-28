@@ -7,3 +7,6 @@
 .margin-top {
 	margin-top: 20px;
 }
+.container {
+	width: 1200px !important;
+}

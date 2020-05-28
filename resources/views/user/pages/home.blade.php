@@ -179,12 +179,12 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="{{ route('product.detail', $pd->id) }}"><img src="upload/{{ $pd->image }}" alt="IMG-PRODUCT" height="350"></a>
+							<a href="{{ route('product-detail', $pd->id) }}"><img class="lazy" data-original="upload/{{ $pd->image }}" alt="IMG-PRODUCT" height="350"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="{{ route('product.detail', $pd->id) }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="{{ route('product-detail', $pd->id) }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									{{ $pd->name }}
 								</a>
 
@@ -198,11 +198,14 @@
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+								{{-- <a href="#" class="dis-block pos-relative js-addwish-b2">
 									<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 										<a href="{{ route('cart.getAdd', $pd->id) }}"><i class="zmdi zmdi-shopping-cart"></i></a>
 									</div>
-								</a>
+								</a> --}}
+									<div id="add_to_cart" class="cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+										<button class="btn btn-primary" data-id="{{ $pd->id }}"><i class="zmdi zmdi-shopping-cart"></i></button>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -211,11 +214,16 @@
 			</div>
 			@endif
 
+			<div id="more_data"></div>
+
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+				{{-- <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More
-				</a>
+				</a> --}}
+				<button id="load_more" name="load_more_button" data-id="" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Xem thêm
+				</button>
 			</div>
 		</div>
 	</section>

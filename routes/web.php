@@ -63,7 +63,7 @@ Route::group(['prefix' => 'user'], function() {
 	Route::post('profile/{id}', 'PageController@updateProfile')->name('update-profile');
 
 	Route::get('product-type/{id}', 'PageController@productType')->name('product.type');
-	Route::get('product-detail/{id}', 'PageController@productDetail')->name('product.detail');
+	Route::get('product-detail/{id}', 'PageController@productDetail')->name('product-detail');
 
 	Route::get('suggest', 'PageController@getSuggest')->name('get.suggest');
 	Route::post('suggest', 'PageController@postSuggest')->name('post.suggest');
@@ -78,3 +78,9 @@ Route::get('cart/delete/{id}', 'CartController@deleteCart')->name('cart.delete')
 Route::get('list-cart', 'CartController@listCart')->name('cart.list');
 Route::get('checkout', 'CartController@checkout')->name('checkout');
 Route::post('checkout', 'CartController@postCheckout')->name('postCheckout');
+
+// Live search
+Route::get('live-search', 'PageController@liveSearch')->name('live_search');
+
+// Load more
+Route::get('load-more', 'PageController@load_data')->name('load_data');

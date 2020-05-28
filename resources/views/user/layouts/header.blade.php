@@ -69,24 +69,33 @@
 
 				<!-- Icon header -->
 				<div class="wrap-icon-header flex-w flex-r-m">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-						<i class="zmdi zmdi-search"></i>
-					</div>
+					<form action="#" method="POST" id="form-search">
+                        <div class="bor17 of-hidden pos-relative">
+                            <input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search" placeholder="Nhập từ khóa..." id="search" style="overflow: auto;">
 
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{ \Cart::count() }}">
+                            <button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </div>
+                        <div id="result_search"></div>
+                        {{ csrf_field() }}
+                    </form>
+
+					<div id="count_item_cart" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{ \Cart::count() }}">
+						<input id="count_cart" type="hidden" value="{{ \Cart::count() }}">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 
-					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+					{{-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 						<i class="zmdi zmdi-favorite-outline"></i>
-					</a>
+					</a> --}}
 				</div>
 			</nav>
 		</div>	
 	</div>
 
 	<!-- Modal Search -->
-	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+	{{-- <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 		<div class="container-search-header">
 			<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
 				<img src="assets/user/images/icons/icon-close2.png" alt="CLOSE">
@@ -99,7 +108,7 @@
 				<input class="plh3" type="text" name="search" placeholder="Search...">
 			</form>
 		</div>
-	</div>
+	</div> --}}
 </header>
 <!-- Cart -->
 <div class="wrap-header-cart js-panel-cart">

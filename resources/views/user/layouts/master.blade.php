@@ -31,6 +31,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 	<link href="assets/user/css/preview.css" rel="stylesheet">
@@ -83,6 +84,111 @@
 subiz('setAccount', 'acqmctnwjyyktiptpxmv');
 </script>
 <!-- End Subiz -->
+
+<!-- Live Search -->
+<script>
+	$(document).ready(function() {
+		$("#search").keyup(function(e) {
+			e.preventDefault();
+			var query = $(this).val();
+			var _token = $('input[name="_token"]').val();
+
+			if(query != '' && query.length > 1) {
+				$.ajax({
+					url: "{{ route('live_search') }}",
+					method: "GET",
+					data: {query:query, _token:_token},
+					success: function(data) {
+						$("#result_search").fadeIn();
+						$("#result_search").html(data);
+					}
+				})
+			} else {
+				$("#result_search").fadeOut();
+			}
+		});
+
+		$(window).scroll(function() {
+			var height = $(this).scrollTop();
+			if (height > 0) {
+				$("#search").css({"top": "12px"});
+			} else {
+				$("#search").css({"top": "52px"});
+			}
+		})
+
+		// Load more product
+		var pageNum = 2;
+		$(document).ready(function() {
+			$("#load_more").on('click', function(){
+				var url = window.location.href;
+				var id = $("#product_id").val();
+				console.log(id);
+				var _token = $("input[name='_token']").val();
+				$.ajax({
+					url: "load-more?page=" + pageNum,
+					method: "GET",
+					data: {_token:_token},
+					success: function(data) {
+						pageNum += 1;
+						console.log(data.length);
+						if (data.length != 0) {
+							$("#more_data").append(data);
+						}
+						if (data.length < 6000) {
+							$("#load_more").fadeOut();
+						}
+					}
+				})
+			});
+		});
+
+		// Add to cart ajax
+		$(document).ready(function() {
+			var count_cart = $("#count_cart").val();
+			$(".container").on('click', '#add_to_cart button', function(event) {
+				event.preventDefault();
+				var id = $(this).data("id");
+				count_cart++;
+				console.log(count_cart);
+				$.ajax({
+					url:"cart/add/" + id,
+					method:"GET",
+					data:{id:id},
+					success: function(data) {
+						// location.reload();
+						$("#count_item_cart").attr('data-notify', count_cart);
+					}
+				})
+			})
+		})
+
+		// Lazy loading image
+		$("img.lazy").lazyload();
+
+		// $("#load_more").on('click',function() {
+		// 	$("img.lazy").lazyload();
+		// })
+
+	});
+</script>
+<!-- End Live search -->
+
+<style>
+	#search {
+		position: fixed;
+		right: 18%;
+		width: 280px;
+		top: 55px;
+		border-radius: 21px;
+		border: 1px solid rgb(106, 145, 190);
+	}
+	#result_search {
+		position: absolute;
+		right: 20%;
+		top: 64px;
+	}
+</style>
 
 </body>
 </html>

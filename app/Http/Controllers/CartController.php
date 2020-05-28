@@ -7,12 +7,17 @@ use App\Http\Requests\CheckoutRequest;
 use App\Product;
 use App\Order;
 use App\OrderDetail;
+use Session;
+use App\Cart;
 
 class CartController extends Controller
 {
     public function getaddCart(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
+        // ------ Cách 1: Dùng bumbummen99 ------
+
         if ($request->qty) {
             $qty = $request->qty;
         } else {
@@ -29,6 +34,15 @@ class CartController extends Controller
                 'image' => $product->image,
             ],
         ]);
+
+        // ------ Cách 2 : Dùng Session --------
+
+        // $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        // $cart = new Cart($oldCart);
+        // $cart->add($product, $product->id);
+
+        // $request->session()->put('cart', $cart);
+        // dd($request->session()->get('cart'));
 
         return redirect()->back();
     }
